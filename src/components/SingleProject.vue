@@ -55,7 +55,7 @@ p{
     align-items: center;
 }
 span{
-    margin-left: 11px;
+    margin-left: 12px;
 }
 span:hover{
     cursor: pointer;
