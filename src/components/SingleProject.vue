@@ -55,10 +55,11 @@ p{
     align-items: center;
 }
 span{
-    margin-left: 10px;
+    margin-left: 11px;
 }
 span:hover{
     cursor: pointer;
     color: #777;
 }
+
 </style>
