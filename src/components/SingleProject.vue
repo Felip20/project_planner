@@ -1,11 +1,11 @@
 <template>
-    <div class="project" @click="ShowData=!ShowData">
+    <div class="project">
         <div class="flexing">
             <div>
-                <h3>{{vic.title}}</h3>
+                <h3 @click="ShowData=!ShowData">{{vic.title}}</h3>
             </div>
             <div>
-                <span class="material-icons">
+                <span class="material-icons" @click="deleteProject">
                     delete
                 </span>
                 <span class="material-icons">
@@ -27,6 +27,20 @@ export default {
     data(){
         return{
             ShowData: false,
+            api: "http://localhost:3000/projects/"
+        }
+    },
+    methods:{
+        deleteProject(){
+            let deleteRoute = this.api+this.vic.id;
+            fetch(deleteRoute,{method:"DELETE"})
+            .then(()=>{
+                this.$emit("dele",this.vic.id)
+            })
+            .catch(()=>{
+
+            })
+            
         }
     }
 }
@@ -55,7 +69,7 @@ p{
     align-items: center;
 }
 span{
-    margin-left: 11px;
+    margin-left: 10px;
 }
 span:hover{
     cursor: pointer;
