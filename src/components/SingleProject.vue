@@ -1,5 +1,5 @@
 <template>
-    <div class="project">
+    <div class="project" :class="{checking:vic.complete}">
         <div class="flexing">
             <div>
                 <h3 @click="ShowData=!ShowData">{{vic.title}}</h3>
@@ -11,13 +11,13 @@
                 <span class="material-icons">
                     edit
                 </span>
-                <span class="material-icons">
+                <span class="material-icons" @click="updateProject">
                     done
                 </span>
             </div>
         </div>
         <p v-if="ShowData">{{vic.detail}}</p>
-        
+            {{vic.complete}}
     </div>
 </template>
 
@@ -41,7 +41,27 @@ export default {
 
             })
             
+        },
+        updateProject(){
+            let updateRoute = this.api+this.vic.id;
+            fetch(updateRoute,{method:"PATCH",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify(
+                    {
+                        complete:!this.vic.complete
+                    }
+                )
+            })
+            .then(()=>{
+                this.$emit("complete",this.vic.id)
+            })
+            .catch(()=>{
+
+            })
         }
+        
     }
 }
 </script>
@@ -74,6 +94,9 @@ span{
 span:hover{
     cursor: pointer;
     color: #777;
+}
+.checking{
+    border-left-color: green;
 }
 
 </style>
