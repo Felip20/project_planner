@@ -1,12 +1,6 @@
 {
   "projects": [
     {
-      "id": 2,
-      "title": "project title 2 update",
-      "detail": "update",
-      "complete": false
-    },
-    {
       "title": "project planner",
       "detail": "daily project planning",
       "complete": false,
