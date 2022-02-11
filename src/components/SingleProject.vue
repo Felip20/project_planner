@@ -13,7 +13,7 @@
                         edit
                     </span>
                 </router-link>
-                <span class="material-icons" @click="updateProject">
+                <span class="material-icons" @click="doneProject">
                     done
                 </span>
             </div>
@@ -44,7 +44,7 @@ export default {
             })
             
         },
-        updateProject(){
+        doneProject(){
             let updateRoute = this.api+this.vic.id;
             fetch(updateRoute,{method:"PATCH",
                 headers:{
